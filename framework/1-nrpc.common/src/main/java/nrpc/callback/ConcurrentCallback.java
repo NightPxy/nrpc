@@ -69,7 +69,7 @@ public abstract class ConcurrentCallback {
 
         long timeout = System.currentTimeMillis() + timeoutMils;
         final ReentrantLock lock = this.lock;
-        lock.lock();
+        lock.lockInterruptibly();
         try {
             while (System.currentTimeMillis() < timeout) {
                 if (this.response != null) {
